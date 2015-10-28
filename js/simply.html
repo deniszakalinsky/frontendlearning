@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    document.writeln('<p>Объявляю переменные...</p>');
+    //var n = 100;
+    var p = 2;
+    var arr = [];
+    var n = prompt('Введите число:', 100);
+
+    document.writeln('<p>Заполняю массив...</p>');
+    for (i=0; i <= n; i++) {
+        arr[i] = true;
+    }
+
+    arr[0] = false;
+    arr[1] = false;
+
+    document.writeln('<p>Вычеркиваю то, что нам не надо...</p>');
+    for( i = p; i*i <= arr.length; i++) {
+        if ( i >= p ) {
+            for ( j = p + p; j <= n; j += p ) {
+                arr[j] = false;
+            }
+        }
+        p++;
+    }
+
+    document.writeln('<p><b>Уииии! Вывожу результат!</b></p>');
+    for ( i = 0; i <= arr.length; i++ ) {
+        if (arr[i])
+        { console.log(i); document.write(i+" ");
+        }
+    }
+</script>
+
+</body>
+</html>

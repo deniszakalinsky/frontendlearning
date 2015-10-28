@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function words() {
+        var anyText = prompt("Введите ваш текст: ", "В этом предложении предложении предложении предложении предложении можно выбирать самые предлинные предлинные слова");
+        var wordArr = new Array();
+        var maxStr = new String();
+        var tempStr = new String();
+        var minStr = new String();
+        var resArr = new Array();
+
+        maxStr = "";
+        wordArr = anyText.split(" ");
+
+        var i, j = 0;
+
+        for (var i = 0, len = wordArr.length; i < len; i++) {
+            for (var j = i; j < len; j++)
+                if (wordArr[i].length > wordArr[j].length) {
+                    t = wordArr[i];
+                    wordArr[i] = wordArr[j];
+                    wordArr[j] = t;
+                }
+        }
+
+         document.write("<u>Предложение было такое: </u><br>"+anyText+"<br><br><u>По словам получается как-то так: </u><br>");
+         for (var i=0 in wordArr) { document.write(wordArr[i]+"<br>");} // xXx
+         document.write("<br><u>Ну а три самых длинных слова в предложении: </u><br>");
+
+        j = 0; // Счетчик
+        i = wordArr.length-1;
+
+        while (j<3 && !(wordArr[i-1] === undefined) ) { // три непохожих слова и кривенькая защита цикла
+            tempStr = wordArr[i];
+            minStr = wordArr[i-1];
+
+          if (tempStr!=minStr) { // фильтруем похожие слова
+              document.writeln("<b>"+tempStr+" </b><br>");
+              resArr.push(tempStr);
+              j++; //
+          }
+            i--;
+        }
+        document.write("<br>Не, ну если нужен алерт, давайте сделаем еще и алерт...");
+        alert(resArr[0]+"; "+resArr[1]+"; "+resArr[2]);
+
+    }
+</script>
+
+<p>Ну что, будем вводить текст?</p>
+
+<form action="javascript:words()">
+    <input type="submit" value="ДАааа!1">
+</form>
+
+</body>
+</html>

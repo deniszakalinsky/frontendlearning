@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 4</title>
+</head>
+<body>
+<script>
+    var CountryInfo = [];
+
+    function readData()
+    {
+        var Countries = {};
+
+        Countries.country = prompt("Страна: ","");
+        Countries.capital = prompt("Столица: ", "");
+        return Countries;
+    }
+
+    function viewData()
+    {
+
+        var Temp = document.getElementById("data-block").innerHTML;
+
+        if (CountryInfo.length==0) {
+            document.getElementById("data-block").innerHTML = "Пока нет данных<br>";
+            return;
+        }
+        for (var i=0; i<CountryInfo.length;++i)
+        {
+            Temp += (i+1)+" Страна: "+CountryInfo[i].country+" Столица: "+CountryInfo[i].capital+"<br>";
+        }
+
+        document.getElementById("data-block").innerHTML = Temp;
+    }
+
+    function removeData()
+    {
+        var searchStr = prompt("Какую страну удалим?", "");
+        for (var i=0; i<CountryInfo.length;++i)
+        {
+            if (CountryInfo[i].country.toLowerCase()==searchStr.toLowerCase()) {
+                CountryInfo.splice(i,1);
+                document.getElementById("data-block").innerHTML = "Страна "+searchStr+" удалена<br>";
+                return;
+            }
+        }
+        document.getElementById("data-block").innerHTML = "Алярм! Другой запрос нужен!<br>"
+    }
+
+    function searchData()
+    {
+        var searchStr = document.getElementById("form-query").value;
+        for (var i=0; i<CountryInfo.length;++i)
+        {
+            if (CountryInfo[i].country.toLowerCase()==searchStr.toLowerCase()) {
+                document.getElementById("data-block").innerHTML = "У страны "+CountryInfo[i].country+" столицей является "+CountryInfo[i].capital+"<br>";
+                return;
+            }
+
+        }
+        document.getElementById("data-block").innerHTML = "Алярм! Другой запрос нужен!<br>"
+    }
+
+    function clearDataBlock() {
+        document.getElementById('data-block').innerHTML = '';
+    }
+</script>
+<ul>
+    <li><a href="javascript:CountryInfo.push(readData())">Новая запись</a></li>
+    <li><a href="javascript:viewData()">Все записи</a></li>
+    <li><a href="javascript:removeData()">Удалить запись</a></li>
+    <li><form  action="javascript:searchData()">
+        <input name="q" id="form-query" value="" placeholder="поиск по сайту"> <input type=submit value="Искать"></form>
+    </li>
+    <li><a href="javascript:clearDataBlock()">Очистить окно информации</a></li>
+</ul>
+<div id="data-block" style="background-color: antiquewhite">Внимание! Нет обработчика ошибок! Вводите реальные данные! ;)<br></div>
+</body>
+</html>

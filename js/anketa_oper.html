@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    var f_name  = prompt("Имя:", "");
+    var l_name  = prompt("Фамилия:", "");
+    var age     = prompt("Возраст:", "");
+    var gender  = confirm("Мужчина?");
+    var userdays    = age*365-~~(age/4);
+
+    gender_res = gender ? "Мужчина" : "Женщина";
+
+    retired =  (gender && age>=50) ? "Да" : (!gender && age>=45) ? "Да" : "Нет";
+
+    alert("Имя: "+f_name+"\nФамилия: "+l_name+"\nПол: "+gender_res+"\nЛет: "+age+"\nДней: "+userdays+"\nПенсия: "+retired);
+
+</script>
+</body>
+</html>
